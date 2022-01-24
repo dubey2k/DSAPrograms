@@ -1,3 +1,5 @@
+package Medium;
+
 public class ClosetPersonMax {
 
     public static void main(String[] args) {
