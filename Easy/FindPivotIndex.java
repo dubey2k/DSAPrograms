@@ -22,29 +22,17 @@ Right sum = nums[4] + nums[5] = 5 + 6 = 11
 
 public class FindPivotIndex {
     public static void main(String[] args) {
-        int[] arr = { -1, -1, -1, -1, -1, 0 };
+        int[] arr = { 1, 7, 3, 2, 3, 2, 6 };
         System.out.println(pivot(arr));
     }
 
-    public static int pivot(int[] arr) {
-        int len = arr.length;
-        int lS = 0, rS = 0;
-        int i = 0, j = len - 1;
-        while (i <= j) {
-            if (lS > rS) {
-                rS += arr[j];
-                j--;
-            } else if (lS < rS) {
-                lS += arr[i];
-                i++;
-            } else if (lS == rS) {
-                if (i != j) {
-                    rS += arr[j];
-                    j--;
-                } else
-                    return i;
-            }
-        }
+    public static int pivot(int[] nums) {
+        int total = 0, sum = 0;
+        for (int num : nums)
+            total += num;
+        for (int i = 0; i < nums.length; sum += nums[i++])
+            if (sum * 2 == total - nums[i])
+                return i;
         return -1;
     }
 }
